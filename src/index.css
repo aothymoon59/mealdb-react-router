@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply text-blue-700 transition-colors duration-200
+}
+
+.default {
+    @apply text-gray-700 transition-colors duration-200
+}
