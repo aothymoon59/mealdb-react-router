@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Foods from "./components/Foods/Foods";
+import FoodDetail from "./components/FoodDetail/FoodDetail";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,16 @@ const router = createBrowserRouter([
       {
         path: "/foods",
         element: <Foods></Foods>,
+        loader: () =>
+          fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"),
+      },
+      {
+        path: "/food/:foodId",
+        element: <FoodDetail></FoodDetail>,
+        loader: ({ params }) =>
+          fetch(
+            `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${params.foodId}`
+          ),
       },
     ],
   },
